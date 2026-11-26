@@ -112,10 +112,11 @@
             width: 136px;
             height: 136px;
             border-radius: 36px;
-            object-fit: cover;
+            object-fit: contain;
             box-shadow: 0 14px 35px rgba(232, 106, 23, 0.18);
             animation: pulse 1.8s infinite ease-in-out;
             background: #fff;
+            padding: 6px;
         }
         .loader-text {
             font-family: 'Outfit', sans-serif;
@@ -215,7 +216,7 @@
             height: 72px;
             border-radius: 20px;
             background: #ffffff;
-            padding: 3px;
+            padding: 4px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.08);
             border: 1.5px solid rgba(232, 106, 23, 0.25);
             overflow: hidden;
@@ -223,8 +224,8 @@
         .header-logo {
             width: 100%;
             height: 100%;
-            border-radius: 17px;
-            object-fit: cover;
+            border-radius: 16px;
+            object-fit: contain;
         }
         .brand-wordmark {
             font-family: 'Outfit', sans-serif;
@@ -386,12 +387,14 @@
             overflow: hidden;
             border: 2px solid transparent;
             flex-shrink: 0;
+            padding: 2px;
         }
         .cat-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
+            border-radius: 10px;
         }
         .cat-item.active {
             background: rgba(232, 106, 23, 0.14);
@@ -463,7 +466,7 @@
             border-radius: 99px;
         }
 
-        /* كروت الأصناف */
+        /* كروت الأصناف العادية */
         .food-card {
             background: var(--white);
             border-radius: 22px;
@@ -486,11 +489,13 @@
             background: #e5e4df;
             flex-shrink: 0;
             border: 1px solid rgba(0,0,0,0.05);
+            padding: 3px;
         }
         .item-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            border-radius: 14px;
         }
         .food-info {
             flex: 1;
@@ -541,6 +546,67 @@
             margin-bottom: 8px;
         }
 
+        /* --- كارت قسم العروض Offers🔥 المميز --- */
+        .offer-card {
+            background:
+                linear-gradient(180deg, rgba(232, 106, 23, 0.08) 0%, transparent 32%),
+                var(--white);
+            border-radius: 26px;
+            margin-bottom: 18px;
+            padding: 15px;
+            box-shadow: 0 12px 28px rgba(232, 106, 23, 0.12);
+            border: 1.5px solid rgba(232, 106, 23, 0.28);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .offer-card.unavailable {
+            opacity: 0.65;
+        }
+        .offer-top-ribbon {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .offer-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, var(--accent), var(--warm-gold));
+            color: #ffffff;
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 99px;
+            box-shadow: 0 4px 12px rgba(232, 106, 23, 0.25);
+        }
+        .offer-showcase-box {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-height: 340px;
+            border-radius: 20px;
+            background: var(--bg);
+            border: 1px solid rgba(232, 106, 23, 0.18);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .offer-showcase-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            display: block;
+        }
+        .offer-body {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         /* التحكم في عدد القطع / الكمية داخل الكارت */
         .card-actions-row {
             display: flex;
@@ -548,7 +614,7 @@
             align-items: center;
             gap: 8px;
             width: 100%;
-            margin-top: auto;
+            margin-top: 6px;
         }
         .qty-control {
             display: inline-flex;
@@ -818,7 +884,9 @@
             width: 50px;
             height: 50px;
             border-radius: 12px;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--white);
+            padding: 2px;
         }
         .cart-item-info {
             flex: 1;
@@ -926,12 +994,13 @@
             width: 58px;
             height: 58px;
             border-radius: 16px;
-            object-fit: cover;
+            object-fit: contain;
             margin: 8px auto;
             display: block;
             border: 2px solid var(--accent);
             box-shadow: 0 6px 16px rgba(232, 106, 23, 0.22);
             background: #fff;
+            padding: 3px;
         }
         .login-input {
             width: 100%;
@@ -1305,17 +1374,18 @@
         const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQeNWH_MKd_-n6yqyGV07owhnZN966rxX-xeZZNogPi7KvxU8EVKa0uddlocPFcqVFj9Nn4Lq3ugT6/pub?output=csv';
         const WHATSAPP_NUMBER = '201080403796';
         const IMAGES_PATH = "./images/";
+        const OFFERS_CATEGORY = "Offers🔥";
 
         const FIREBASE_DB_URL = 'https://somo-sushi-admin-21a5b-default-rtdb.firebaseio.com';
         const DEFAULT_ADMIN_PASS = '1234';
-        const MENU_CACHE_KEY = 'somo_sushi_menu_cache_v1';
+        const MENU_CACHE_KEY = 'somo_sushi_menu_cache_v2';
 
         let menuData = [];
         let cart = [];
         let currentTotal = 0; 
         let deferredPrompt;
         let selectedOrderType = 'delivery';
-        let activeCategory = '';
+        let activeCategory = OFFERS_CATEGORY;
 
         let adminPassword = DEFAULT_ADMIN_PASS;
         let disabledItemsMap = {};
@@ -1324,7 +1394,11 @@
         let secretTapCount = 0;
         let secretTapTimer = null;
 
-        // مفتاح موحد آمن لـ Firebase Realtime Database لا يحتوي على أي رموز خاصة أو %
+        function isOffersCategoryName(catName) {
+            const clean = String(catName || '').trim().toLowerCase();
+            return clean === 'offers🔥' || clean === 'offers';
+        }
+
         function normalizeItemKey(str) {
             return String(str || '')
                 .trim()
@@ -1403,7 +1477,6 @@
             }
         }
 
-        // فتح لوحة الإدارة بعد 3 ضغطات متتالية
         function handleBrandSecretTap() {
             secretTapCount++;
             clearTimeout(secretTapTimer);
@@ -1681,7 +1754,6 @@
             return match ? parseInt(match[1]) : null;
         }
 
-        // تسريع تحميل الصور فوراً بدون تعطيل الرندر
         function warmImagesFast(data) {
             const seen = new Set();
             const queueUrl = (url) => {
@@ -1692,6 +1764,8 @@
                 img.src = url;
             };
 
+            queueUrl(`${IMAGES_PATH}${OFFERS_CATEGORY}.jpg`);
+            queueUrl(`${IMAGES_PATH}offers.jpg`);
             const cats = [...new Set(data.map(i => i.category))];
             cats.forEach(c => queueUrl(`${IMAGES_PATH}${c}.jpg`));
             data.forEach(item => queueUrl(item.img));
@@ -1715,9 +1789,10 @@
 
         function mapRowsToMenu(parsedRows) {
             return parsedRows.map((col, idx) => {
-                const category = col[0] || 'Menu';
-                const name = col[1] || '';
-                const desc = col[2] || '';
+                const rawCat = (col[0] || 'Menu').trim();
+                const category = isOffersCategoryName(rawCat) ? OFFERS_CATEGORY : rawCat;
+                const name = (col[1] || '').trim();
+                const desc = (col[2] || '').trim();
                 const unitPrice = extractPrice(col[3]);
                 const basePieces = detectBasePieces(name, desc);
 
@@ -1783,21 +1858,38 @@
             }
         }
 
-        function renderNav() {
-            if (!menuData.length) return;
-            const uniqueCats = [...new Map(menuData.map(item => [item.category, item])).values()];
-            window.uniqueCategoriesList = uniqueCats.map(c => c.category);
-            if (!activeCategory || !window.uniqueCategoriesList.includes(activeCategory)) {
-                activeCategory = window.uniqueCategoriesList[0];
-            }
-            const activeIdx = Math.max(0, window.uniqueCategoriesList.indexOf(activeCategory));
+        function getOrderedCategories() {
+            const otherCats = [...new Set(
+                menuData
+                    .map(item => item.category)
+                    .filter(cat => !isOffersCategoryName(cat))
+            )];
+            return [OFFERS_CATEGORY, ...otherCats];
+        }
 
-            document.getElementById('catNav').innerHTML = uniqueCats.map((cat, idx) => `
+        function renderNav() {
+            const orderedCats = getOrderedCategories();
+            window.uniqueCategoriesList = orderedCats;
+
+            if (!activeCategory || !orderedCats.includes(activeCategory)) {
+                activeCategory = OFFERS_CATEGORY;
+            }
+            const activeIdx = Math.max(0, orderedCats.indexOf(activeCategory));
+
+            document.getElementById('catNav').innerHTML = orderedCats.map((catName, idx) => {
+                const catImgSrc = isOffersCategoryName(catName)
+                    ? `${IMAGES_PATH}Offers🔥.jpg`
+                    : `${IMAGES_PATH}${catName}.jpg`;
+                const fallbackSrc = isOffersCategoryName(catName)
+                    ? `${IMAGES_PATH}offers.jpg`
+                    : `${IMAGES_PATH}default.jpg`;
+
+                return `
                 <div class="cat-item ${idx === activeIdx ? 'active' : ''}" onclick="filterCat(this, ${idx})">
-                    <div class="cat-img-box"><img src="${IMAGES_PATH}${cat.category}.jpg" onerror="this.src='${IMAGES_PATH}default.jpg'" loading="eager" decoding="async"></div>
-                    <span>${cat.category}</span>
-                </div>
-            `).join('');
+                    <div class="cat-img-box"><img src="${catImgSrc}" onerror="this.onerror=null; this.src='${fallbackSrc}';" loading="eager" decoding="async"></div>
+                    <span>${catName}</span>
+                </div>`;
+            }).join('');
 
             renderItems(menuData.filter(i => i.category === activeCategory), activeCategory);
         }
@@ -1846,16 +1938,81 @@
             }
         }
 
+        function buildStandardCardHtml(item, available, pieceTag, qtyLabel, btnHtml) {
+            return `
+            <div class="food-card ${available ? '' : 'unavailable'}" data-id="${item.id}" data-qty="1">
+                <div class="item-img-box"><img src="${item.img}" onerror="this.src='${IMAGES_PATH}default.jpg'" loading="eager" decoding="async"></div>
+                <div class="food-info">
+                    <div>
+                        <div class="food-header-row">
+                            <span class="food-name">${item.name}</span>
+                            <span class="food-price" id="price-display-${item.id}">${item.unitPrice} EGP</span>
+                        </div>
+                        ${item.desc ? `<p class="food-desc">${item.desc}</p>` : ''}
+                        ${pieceTag}
+                    </div>
+                    
+                    <div class="card-actions-row">
+                        <div class="qty-control">
+                            <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, 1)">+</button>
+                            <span class="qty-value" id="qty-display-${item.id}">1</span>
+                            <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, -1)">-</button>
+                            <span class="qty-label menu-font" id="pieces-label-${item.id}">${qtyLabel}</span>
+                        </div>
+                        ${btnHtml}
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function buildOfferCardHtml(item, available, pieceTag, qtyLabel, btnHtml) {
+            return `
+            <div class="offer-card ${available ? '' : 'unavailable'}" data-id="${item.id}" data-qty="1">
+                <div class="offer-top-ribbon">
+                    <span class="offer-tag-pill">Offers🔥 عرض خاص</span>
+                    <span class="food-price" id="price-display-${item.id}">${item.unitPrice} EGP</span>
+                </div>
+
+                <div class="offer-showcase-box">
+                    <img src="${item.img}" onerror="this.src='${IMAGES_PATH}default.jpg'" alt="${item.name}" loading="eager" decoding="async">
+                </div>
+
+                <div class="offer-body">
+                    <span class="food-name" style="font-size:1.08rem;">${item.name}</span>
+                    ${item.desc ? `<p class="food-desc" style="margin:2px 0 6px 0;">${item.desc}</p>` : ''}
+                    ${pieceTag}
+
+                    <div class="card-actions-row">
+                        <div class="qty-control">
+                            <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, 1)">+</button>
+                            <span class="qty-value" id="qty-display-${item.id}">1</span>
+                            <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, -1)">-</button>
+                            <span class="qty-label menu-font" id="pieces-label-${item.id}">${qtyLabel}</span>
+                        </div>
+                        ${btnHtml}
+                    </div>
+                </div>
+            </div>`;
+        }
+
         function renderItems(items, title) {
             const closedBannerHtml = storeClosed
                 ? `<div class="store-closed-banner">المطعم متوقف مؤقتاً عن استقبال الطلبات الآن 🍣</div>`
                 : '';
 
             if (!items.length) {
+                const emptyText = isOffersCategoryName(title)
+                    ? 'لا توجد عروض متاحة في قسم Offers🔥 حالياً 🍣'
+                    : 'مفيش أصناف مطابقة لبحثك حالياً 🍣';
+
                 document.getElementById('menuList').innerHTML = `
                     ${closedBannerHtml}
-                    <div style="text-align:center; padding:40px 15px; color:var(--desc-text); font-weight:700;">
-                        مفيش أصناف مطابقة لبحثك حالياً 🍣
+                    <div class="section-heading">
+                        <h2>${title}</h2>
+                        <span class="section-count menu-font">0 items</span>
+                    </div>
+                    <div style="text-align:center; padding:36px 15px; color:var(--desc-text); font-weight:700;">
+                        ${emptyText}
                     </div>`;
                 return;
             }
@@ -1876,30 +2033,10 @@
                     ? `<button type="button" class="order-btn" onclick="addToCart(event, this, ${item.id})">اطلب</button>`
                     : `<button type="button" class="order-btn disabled-item" disabled>غير متوفر</button>`;
 
-                return `
-                <div class="food-card ${available ? '' : 'unavailable'}" data-id="${item.id}" data-qty="1">
-                    <div class="item-img-box"><img src="${item.img}" onerror="this.src='${IMAGES_PATH}default.jpg'" loading="eager" decoding="async"></div>
-                    <div class="food-info">
-                        <div>
-                            <div class="food-header-row">
-                                <span class="food-name">${item.name}</span>
-                                <span class="food-price" id="price-display-${item.id}">${item.unitPrice} EGP</span>
-                            </div>
-                            ${item.desc ? `<p class="food-desc">${item.desc}</p>` : ''}
-                            ${pieceTag}
-                        </div>
-                        
-                        <div class="card-actions-row">
-                            <div class="qty-control">
-                                <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, 1)">+</button>
-                                <span class="qty-value" id="qty-display-${item.id}">1</span>
-                                <button type="button" class="qty-btn" onclick="changeCardQty(${item.id}, -1)">-</button>
-                                <span class="qty-label menu-font" id="pieces-label-${item.id}">${qtyLabel}</span>
-                            </div>
-                            ${btnHtml}
-                        </div>
-                    </div>
-                </div>`;
+                if (isOffersCategoryName(item.category)) {
+                    return buildOfferCardHtml(item, available, pieceTag, qtyLabel, btnHtml);
+                }
+                return buildStandardCardHtml(item, available, pieceTag, qtyLabel, btnHtml);
             }).join('');
 
             document.getElementById('menuList').innerHTML = headerHtml + cardsHtml;
@@ -1909,7 +2046,7 @@
             const item = menuData.find(i => i.id === itemId);
             if (!item) return;
 
-            const card = document.querySelector(`.food-card[data-id="${itemId}"]`);
+            const card = document.querySelector(`[data-id="${itemId}"]`);
             if (!card) return;
 
             let currentQty = parseInt(card.dataset.qty) || 1;
@@ -1931,7 +2068,7 @@
             const item = menuData.find(i => i.id === itemId);
             if (!item || !isItemAvailable(item.name)) return;
 
-            const card = btn.closest('.food-card');
+            const card = btn.closest(`[data-id="${itemId}"]`);
             const qty = parseInt(card.dataset.qty) || 1;
 
             const existingIndex = cart.findIndex(c => c.id === item.id);
